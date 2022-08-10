@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import RequestsList from './components/RequestsList/RequestsList';
+import Split from 'react-split';
+import MapComponent from './components/MapComponent/MapComponent';
+
+import './scss/app.scss';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="wrapper">
+        <Split className='split-wrapper'
+          sizes={[50, 50]}
+          minSize={200}
+          expandToMin={false}
+          gutterSize={5}
+          gutterAlign="center"
+          snapOffset={30}
+          dragInterval={1}
+          direction="horizontal">
+          <RequestsList />
+          <MapComponent />
+        </Split>
+      </div>
     </div>
   );
 }
