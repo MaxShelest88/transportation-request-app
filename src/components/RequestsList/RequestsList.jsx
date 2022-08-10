@@ -1,56 +1,46 @@
 import React from 'react';
 import { List } from 'antd';
+import { useState } from 'react';
+import Select from '../UI/SelectModule/SelectModule';
+import { setRequset } from '../../redux/request/slice';
+import { useDispatch } from 'react-redux';
 import { CarOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import classes from './RequestsList.module.scss';
-import Select from '../UI/SelectModule/SelectModule';
 
-const data = [
-  {
-    title: 'Ant Design Title 1',
-  },
-  {
-    title: 'Ant Design Title 2',
-  },
-  {
-    title: 'Ant Design Title 3',
-  },
-  {
-    title: 'Ant Design Title 4',
-  },
-];
 
-const handleChange = (value) => {
-  console.log(`selected ${value}`);
-};
+const RequestsList = ({ data, cities }) => {
 
-const RequestsList = () => {
+	const dispatch = useDispatch();
+
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+
+  const handleClick = (item) => {
+    dispatch(setRequset(item));
+  };
+
   return (
     <List
       itemLayout="horizontal"
       dataSource={data}
-      renderItem={(item) => (
-        <List.Item>
+      renderItem={(item, index) => (
+        <List.Item className={classes.active} onClick={() => handleClick(item)}>
           <List.Item.Meta
             avatar={<CarOutlined />}
-            title={<a href="https://ant.design">{item.title}</a>}
+            title={item.title}
           />
           <div className={classes.actions}>
             <Select
               handleChange={handleChange}
-              defaultValue={item.title}
-              options={[
-                { name: '12', value: '12' },
-                { name: '24', value: '24' },
-              ]}
+              defaultValue={item.path.startPoint}
+              options={cities}
             />
             <Select
               handleChange={handleChange}
-              defaultValue={item.title}
-              options={[
-                { name: '12', value: '12' },
-                { name: '24', value: '24' },
-              ]}
+              defaultValue={item.path.finishPoint}
+              options={cities}
             />
           </div>
         </List.Item>

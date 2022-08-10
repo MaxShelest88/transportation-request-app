@@ -11,6 +11,7 @@ const SelectModule = ({ options, value, defaultValue, handleChange }) => {
 
   return (
     <Select
+      onClick={(e) => e.stopPropagation()}
       defaultValue={defaultValue}
       value={value}
       style={{
