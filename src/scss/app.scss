@@ -11,7 +11,6 @@ body {
 	height: 800px;
 	background-color: #fff;
 	margin: 50px auto;
-	border-radius: 10px;
 	max-width: 1400px;
 	overflow: hidden;
 	@media (max-width: 650px) {
@@ -34,7 +33,7 @@ body {
 }
 
 .gutter {
-    background-color: #eee;
+    background-color: $blue;
     background-repeat: no-repeat;
     background-position: 50%;
 }
