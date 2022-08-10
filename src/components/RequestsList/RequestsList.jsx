@@ -37,7 +37,7 @@ const RequestsList = ({ data, cities }) => {
       itemLayout="horizontal"
       dataSource={data}
       renderItem={(item, index) => (
-        <List.Item className={id === item.id ? classes.active : ''} onClick={() => handleClick(item)}>
+        <List.Item className={`${classes['list-item']} ${id === item.id ? classes.active : ''}`} onClick={() => handleClick(item)}>
           <List.Item.Meta
             avatar={<CarOutlined />}
             title={item.title}
