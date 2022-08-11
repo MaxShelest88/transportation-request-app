@@ -19,7 +19,7 @@ const points = [
   {
     name: 'Тула',
     value: 'Tula',
-    position: [55.75396, 37.620393],
+    position: [54.1961, 37.6182],
   },
   {
     name: 'Рязань',
