@@ -8,6 +8,5 @@ export const fetchRoute = createAsyncThunk('request/fetchRoute', async (params) 
       ',',
     )}|${finishPoint.position.join(',')}&mode=drive&apiKey=${process.env.REACT_APP_API_KEY}`,
   );
-  console.log(data);
   return data;
 });

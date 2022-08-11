@@ -1,69 +1,15 @@
 import React from 'react';
 import Split from 'react-split';
+import { selectRequests } from '../../redux/requests/selectors';
 import MapComponent from '../MapComponent/MapComponent';
 import RequestsList from '../RequestsList/RequestsList';
-
+import { useSelector } from 'react-redux';
 import classes from './RequestsModule.module.scss';
-
-const points = [
-  {
-    name: 'Москва',
-    value: 'Moscow',
-    position: [55.75396, 37.620393],
-  },
-  {
-    name: 'Тверь',
-    value: 'Tver',
-    position: [56.85872, 35.9176],
-  },
-  {
-    name: 'Тула',
-    value: 'Tula',
-    position: [54.1961, 37.6182],
-  },
-  {
-    name: 'Рязань',
-    value: 'Ryazan',
-    position: [54.60954, 39.71259],
-  },
-];
-
-const data = [
-  {
-    title: 'Заявка 1',
-    id: 0,
-    path: {
-      startPoint: points[0],
-      finishPoint: points[3],
-    },
-  },
-  {
-    title: 'Заявка 2',
-    id: 1,
-    path: {
-      startPoint: points[1],
-      finishPoint: points[2],
-    },
-  },
-  {
-    title: 'Заявка 3',
-    id: 2,
-    path: {
-      startPoint: points[3],
-      finishPoint: points[1],
-    },
-  },
-  {
-    title: 'Заявка 4',
-    id: 3,
-    path: {
-      startPoint: points[2],
-      finishPoint: points[0],
-    },
-  },
-];
+import { points } from '../../data/data';
 
 const RequestsModule = () => {
+  const data = useSelector(selectRequests);
+  console.log(data);
   return (
     <Split
       className="split-wrapper"

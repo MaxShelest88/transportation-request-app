@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { List } from 'antd';
 import { CarOutlined } from '@ant-design/icons';
 import Select from '../UI/SelectModule/SelectModule';
-
+import { useSelector, useDispatch } from 'react-redux';
 import classes from './RequestItem.module.scss';
+import { selectRequests } from '../../redux/requests/selectors';
+import { useRef } from 'react';
+import { setCurrentPoint } from '../../redux/requests/slice';
 
 const RequestItem = ({
   item,
@@ -13,9 +16,21 @@ const RequestItem = ({
   handleStartPointChange,
   handleFinishPointChange,
   handleClick,
+  value,
 }) => {
   const [startValue, setStartValue] = useState(item.path.start);
-  const [finishValue, setFinishValue] = useState(item.path.start);
+  const [finishValue, setFinishValue] = useState(item.path.finish);
+  const isMounted = useRef(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isMounted.current) {
+      const startPoint = cities.find((item) => item.value === startValue);
+      const finishPoint = cities.find((item) => item.value === finishValue);
+      dispatch(setCurrentPoint({ startPoint, finishPoint, item }));
+    }
+    isMounted.current = true;
+  }, [startValue, finishValue]);
 
   const handleStartChange = (value) => {
     setStartValue(value);
