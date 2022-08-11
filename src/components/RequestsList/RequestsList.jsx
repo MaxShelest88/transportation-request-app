@@ -35,21 +35,24 @@ const RequestsList = ({ data, cities }) => {
   };
 
   return (
-    <List
-      itemLayout="horizontal"
-      dataSource={data}
-      renderItem={(item) => (
-        <RequestItem
-          item={item}
-          id={id}
-          path={path}
-          handleFinishPointChange={handleFinishPointChange}
-          handleClick={handleClick}
-          handleStartPointChange={handleStartPointChange}
-          cities={cities}
-        />
-      )}
-    />
+	  <div>
+		  <h2 className={classes.title}>Список заявок</h2>
+   	 <List
+	      itemLayout="horizontal"
+	      dataSource={data}
+	      renderItem={(item) => (
+	        <RequestItem
+	          item={item}
+	          id={id}
+	          path={path}
+	          handleFinishPointChange={handleFinishPointChange}
+	          handleClick={handleClick}
+	          handleStartPointChange={handleStartPointChange}
+	          cities={cities}
+	        />
+	      )}
+	    />
+   </div>
   );
 };
 
