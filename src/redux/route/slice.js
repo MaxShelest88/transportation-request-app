@@ -1,5 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchRoute } from './asyncactions';
+import { createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   features: [],
@@ -9,21 +8,22 @@ const initialState = {
 export const routeSlice = createSlice({
   name: 'route',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchRoute.pending, (state) => {
+  reducers: {
+    getRouteFetch(state) {
       state.features = [];
       state.status = 'loading';
-    });
-    builder.addCase(fetchRoute.fulfilled, (state, action) => {
-      state.features = action.payload.features;
+    },
+    getRouteSuccess(state, action) {
+      state.features = action.payload;
       state.status = 'success';
-    });
-    builder.addCase(fetchRoute.rejected, (state, action) => {
+    },
+    getRouteError(state) {
       state.features = [];
       state.status = 'error';
-    });
+    },
   },
 });
+
+export const { getRouteFetch, getRouteSuccess, getRouteError } = routeSlice.actions;
 
 export default routeSlice.reducer;

@@ -5,20 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import 'antd/dist/antd.css';
 import classes from './RequestsList.module.scss';
 import { selectId, selectPath } from '../../redux/request/selectors';
-import { fetchRoute } from '../../redux/route/asyncactions';
 import RequestItem from '../RequestItem/RequestItem';
+import { getRouteFetch } from '../../redux/route/slice';
 
 const RequestsList = ({ data, cities }) => {
   const path = useSelector(selectPath);
   const id = useSelector(selectId);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const getPath = () => {
-      dispatch(fetchRoute(path));
-    };
-    getPath();
+	useEffect(() => {
+    dispatch(getRouteFetch(path));
   }, [path]);
+	
 
   const handleStartPointChange = (value) => {
     const selectedPoint = cities.find((item) => item.value === value);
