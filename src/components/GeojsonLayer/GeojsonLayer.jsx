@@ -1,6 +1,6 @@
 import React from 'react';
 import L from 'leaflet';
-import { GeoJSON, FeatureGroup, Marker, Popup } from 'react-leaflet';
+import { GeoJSON, FeatureGroup, Marker, Tooltip } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import { selectFeatures } from '../../redux/route/selectors';
 
@@ -32,10 +32,10 @@ const GeojsonLayer = () => {
         return (
           <GeoJSON key={f.properties.time} data={f} style={style}>
             <Marker icon={icon} position={startWaypoint}>
-              <Popup>Точка погрузки</Popup>
+              <Tooltip>Точка погрузки</Tooltip>
             </Marker>
             <Marker icon={icon} position={finishWaypoint}>
-              <Popup>Точка Разгрузки</Popup>
+              <Tooltip>Точка Разгрузки</Tooltip>
             </Marker>
           </GeoJSON>
         );
