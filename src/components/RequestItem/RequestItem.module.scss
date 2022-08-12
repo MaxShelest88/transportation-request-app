@@ -2,11 +2,27 @@
 	display: flex;
 }
 
-.list-item{
+.action {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&:not(:last-child) {
+		margin: 0px 10px 0px 0px;
+	}
+}
+
+.title {
+	margin: 0px 5px 0px 0px;
+}
+
+.list-item {
+	display: block;
+	overflow: auto;
 	padding: 10px;
 	cursor: pointer;
 }
 
-.active{
+.active {
 	background-color: #91d5ff;
 }

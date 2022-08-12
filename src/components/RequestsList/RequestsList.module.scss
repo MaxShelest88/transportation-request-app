@@ -1,3 +1,11 @@
 .title {
 	padding: 10px;
 }
+
+.root {
+	overflow: auto;
+}
+
+.child {
+	min-width: 500px;
+}

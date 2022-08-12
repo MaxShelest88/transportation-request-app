@@ -9,11 +9,10 @@ import { points } from '../../data/data';
 
 const RequestsModule = () => {
   const data = useSelector(selectRequests);
-
   return (
     <Split
       className="split-wrapper"
-      sizes={[30, 70]}
+      sizes={[40, 60]}
       minSize={200}
       expandToMin={false}
       gutterSize={5}

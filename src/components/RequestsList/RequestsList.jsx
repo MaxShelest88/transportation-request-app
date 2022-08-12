@@ -13,10 +13,9 @@ const RequestsList = ({ data, cities }) => {
   const id = useSelector(selectId);
   const dispatch = useDispatch();
 
-	useEffect(() => {
+  useEffect(() => {
     dispatch(getRouteFetch(path));
   }, [path]);
-	
 
   const handleStartPointChange = (value) => {
     const selectedPoint = cities.find((item) => item.value === value);
@@ -33,24 +32,26 @@ const RequestsList = ({ data, cities }) => {
   };
 
   return (
-	  <div>
-		  <h2 className={classes.title}>Список заявок</h2>
-   	 <List
-	      itemLayout="horizontal"
-	      dataSource={data}
-	      renderItem={(item) => (
-	        <RequestItem
-	          item={item}
-	          id={id}
-	          path={path}
-	          handleFinishPointChange={handleFinishPointChange}
-	          handleClick={handleClick}
-	          handleStartPointChange={handleStartPointChange}
-	          cities={cities}
-	        />
-	      )}
-	    />
-   </div>
+    <div className={classes.root}>
+      <div className={classes.child}>
+        <h2 className={classes.title}>Список заявок</h2>
+        <List
+          itemLayout="horizontal"
+          dataSource={data}
+          renderItem={(item) => (
+            <RequestItem
+              item={item}
+              id={id}
+              path={path}
+              handleFinishPointChange={handleFinishPointChange}
+              handleClick={handleClick}
+              handleStartPointChange={handleStartPointChange}
+              cities={cities}
+            />
+          )}
+        />
+      </div>
+    </div>
   );
 };
 
