@@ -9,7 +9,7 @@ import { points } from '../../data/data';
 
 const RequestsModule = () => {
   const data = useSelector(selectRequests);
-  console.log(data);
+
   return (
     <Split
       className="split-wrapper"
