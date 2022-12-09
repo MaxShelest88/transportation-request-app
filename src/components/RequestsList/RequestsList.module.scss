@@ -5,8 +5,10 @@
 
 .root {
 	overflow: auto;
+	background-color: #fff;
 }
 
 .child {
 	min-width: 500px;
+	border-bottom: 1px solid #f0f0f0;
 }

@@ -1,14 +1,22 @@
 .actions {
-	display: flex;
+	@media (min-width: 768px) {
+		display: flex;
+	}
 }
 
 .action {
 	display: flex;
-	justify-content: center;
-	align-items: center;
-
 	&:not(:last-child) {
-		margin: 0px 10px 0px 0px;
+			margin: 0px 0px 5px 0px;
+		}
+
+	@media (min-width: 768px) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&:not(:last-child) {
+			margin: 0px 10px 0px 0px;
+		}
 	}
 }
 

@@ -4,12 +4,8 @@ const initialState = {
   title: 'Заявка 1',
   id: 0,
   path: {
-    startPoint: {name: 'Москва',
-      value: 'Moscow',
-      position: [55.75396, 37.620393],},
-    finishPoint: { name: 'Рязань',
-      value: 'Ryazan',
-      position: [54.60954, 39.71259],},
+    startPoint: { id: 'city-01', name: 'Москва', value: 'Moscow', position: [55.75396, 37.620393] },
+    finishPoint: { id: 'city-04', name: 'Рязань', value: 'Ryazan', position: [54.60954, 39.71259] },
   },
 };
 

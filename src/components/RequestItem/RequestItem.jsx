@@ -15,8 +15,8 @@ const RequestItem = ({
   handleFinishPointChange,
   handleClick,
 }) => {
-  const [startValue, setStartValue] = useState(item.path.start);
-  const [finishValue, setFinishValue] = useState(item.path.finish);
+  const [startValue, setStartValue] = useState(item.path.startPoint.value);
+  const [finishValue, setFinishValue] = useState(item.path.finishPoint.value);
   const isMounted = useRef(false);
   const dispatch = useDispatch();
 
@@ -46,8 +46,12 @@ const RequestItem = ({
   return (
     <List.Item
       className={`${classes['list-item']} ${id === item.id ? classes.active : ''}`}
-      onClick={() => handleClick(item)}>
-      <List.Item.Meta avatar={<CarOutlined />} title={item.title} />
+      onClick={() => handleClick(item)}
+    >
+      <List.Item.Meta
+        avatar={<CarOutlined />}
+        title={item.title}
+      />
       <div className={classes.actions}>
         <div className={classes.action}>
           <span className={classes.title}>Точка погрузки:</span>
@@ -56,6 +60,7 @@ const RequestItem = ({
             handleChange={handleStartChange}
             defaultValue={item.path.startPoint}
             options={cities}
+            item={item}
           />
         </div>
         <div className={classes.action}>
@@ -65,6 +70,7 @@ const RequestItem = ({
             handleChange={handlefinishChange}
             defaultValue={item.path.finishPoint}
             options={cities}
+            item={item}
           />
         </div>
       </div>

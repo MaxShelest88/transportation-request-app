@@ -30,11 +30,21 @@ const GeojsonLayer = () => {
         const startWaypoint = [...f.properties.waypoints[0].location].reverse();
         const finishWaypoint = [...f.properties.waypoints[1].location].reverse();
         return (
-          <GeoJSON key={f.properties.time} data={f} style={style}>
-            <Marker icon={icon} position={startWaypoint}>
+          <GeoJSON
+            key={f.properties.time}
+            data={f}
+            style={style}
+          >
+            <Marker
+              icon={icon}
+              position={startWaypoint}
+            >
               <Tooltip>Точка погрузки</Tooltip>
             </Marker>
-            <Marker icon={icon} position={finishWaypoint}>
+            <Marker
+              icon={icon}
+              position={finishWaypoint}
+            >
               <Tooltip>Точка Разгрузки</Tooltip>
             </Marker>
           </GeoJSON>

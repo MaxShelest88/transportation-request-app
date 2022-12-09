@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { List } from 'antd';
 import { setFinishPoint, setRequest, setStartPoint } from '../../redux/request/slice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +15,7 @@ const RequestsList = ({ data, cities }) => {
 
   useEffect(() => {
     dispatch(getRouteFetch(path));
-  }, [path]);
+  }, [path, dispatch]);
 
   const handleStartPointChange = (value) => {
     const selectedPoint = cities.find((item) => item.value === value);
