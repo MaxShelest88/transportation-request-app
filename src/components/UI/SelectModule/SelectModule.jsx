@@ -5,7 +5,7 @@ const { Option } = Select;
 
 const SelectModule = ({ options, value, defaultValue, handleChange, item }) => {
 
-  const optionValues = options.map((option, index) => (
+  const optionValues = options.map((option) => (
     <Option
       value={option.value}
       key={option.id}

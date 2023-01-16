@@ -5,9 +5,8 @@ import GeojsonLayer from '../GeojsonLayer/GeojsonLayer';
 import classes from './MapComponent.module.scss';
 import { useState } from 'react';
 
-const MapComponent = () => {
-
-  const [position, setPositon] = useState(([55.75396, 37.620393]));
+const MapComponent: React.FC = () => {
+  const [position, setPositon] = useState<[number, number]>([55.75396, 37.620393]);
 
   return (
     <div className={classes.root}>

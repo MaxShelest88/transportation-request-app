@@ -1,8 +1,9 @@
 import { createSlice} from '@reduxjs/toolkit';
+import { Status } from '../../types';
 
 const initialState = {
   features: [],
-  status: 'loading',
+  status: Status.LOADING,
 };
 
 export const routeSlice = createSlice({
@@ -11,15 +12,15 @@ export const routeSlice = createSlice({
   reducers: {
     getRouteFetch(state) {
       state.features = [];
-      state.status = 'loading';
+      state.status = Status.LOADING;
     },
     getRouteSuccess(state, action) {
       state.features = action.payload;
-      state.status = 'success';
+      state.status = Status.SUCCESS;
     },
     getRouteError(state) {
       state.features = [];
-      state.status = 'error';
+      state.status = Status.ERROR;
     },
   },
 });

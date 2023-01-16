@@ -6,8 +6,9 @@ import { useDispatch } from 'react-redux';
 import classes from './RequestItem.module.scss';
 import { useRef } from 'react';
 import { setCurrentPoint } from '../../redux/requests/slice';
+import { RequestItemType } from '../../types/requestItem';
 
-const RequestItem = ({
+const RequestItem: React.FC<RequestItemType> = ({
   item,
   id,
   cities,
@@ -29,14 +30,14 @@ const RequestItem = ({
     isMounted.current = true;
   }, [startValue, finishValue]);
 
-  const handleStartChange = (value) => {
+  const handleStartChange = (value: string) => {
     setStartValue(value);
     if (id === item.id) {
       handleStartPointChange(value);
     }
   };
 
-  const handlefinishChange = (value) => {
+  const handlefinishChange = (value: string) => {
     setFinishValue(value);
     if (id === item.id) {
       handleFinishPointChange(value);

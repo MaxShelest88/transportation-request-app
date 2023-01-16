@@ -3,8 +3,8 @@ import L from 'leaflet';
 import { GeoJSON, FeatureGroup, Marker, Tooltip } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import { selectFeatures } from '../../redux/route/selectors';
-
 import iconMarker from '../../assets/marker.svg';
+import { Waypoint } from '../../types/waypoint';
 
 const style = {
   color: '#279ce4',
@@ -20,18 +20,21 @@ const icon = new L.Icon({
   iconSize: [32, 45],
 });
 
-const GeojsonLayer = () => {
-  const features = useSelector(selectFeatures);
+const GeojsonLayer: React.FC = () => {
+  const features: GeoJSON.Feature[] = useSelector(selectFeatures);
 
   return (
     <FeatureGroup>
       {features.map((f) => {
-        console.log();
-        const startWaypoint = [...f.properties.waypoints[0].location].reverse();
-        const finishWaypoint = [...f.properties.waypoints[1].location].reverse();
+        const startWaypoint: Waypoint = [
+          ...f.properties?.waypoints[0].location,
+        ].reverse() as Waypoint;
+        const finishWaypoint: Waypoint = [
+          ...f.properties?.waypoints[1].location,
+        ].reverse() as Waypoint;
         return (
           <GeoJSON
-            key={f.properties.time}
+            key={f.properties?.time}
             data={f}
             style={style}
           >
@@ -39,13 +42,13 @@ const GeojsonLayer = () => {
               icon={icon}
               position={startWaypoint}
             >
-              <Tooltip>Точка погрузки</Tooltip>
+              <Tooltip>Точка Погрузки</Tooltip>
             </Marker>
             <Marker
               icon={icon}
               position={finishWaypoint}
             >
-              <Tooltip>Точка Разгрузки</Tooltip>
+              <Tooltip>Точка Разгрузки</Tooltip>\д
             </Marker>
           </GeoJSON>
         );

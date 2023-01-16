@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RequestType } from '../../types';
 
-const initialState = {
+const initialState: RequestType = {
   title: 'Заявка 1',
   id: 0,
   path: {
