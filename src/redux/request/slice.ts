@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { RequestType } from '../../types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PointType, RequestType, Waypoint } from '../../types';
 
 const initialState: RequestType = {
   title: 'Заявка 1',
@@ -14,20 +14,20 @@ const requestSlice = createSlice({
   name: 'request',
   initialState,
   reducers: {
-    setRequest(state, action) {
+    setRequest(state, action: PayloadAction<RequestType>) {
       state.title = action.payload.title;
       state.id = action.payload.id;
       state.path.startPoint = action.payload.path.startPoint;
       state.path.finishPoint = action.payload.path.finishPoint;
     },
-    setStartPoint(state, action) {
-      state.path.startPoint = action.payload
+    setStartPoint(state, action: PayloadAction<PointType>) {
+      state.path.startPoint = action.payload;
     },
-    setFinishPoint(state, action) {
-      state.path.finishPoint = action.payload
-    }
+    setFinishPoint(state, action: PayloadAction<PointType>) {
+      state.path.finishPoint = action.payload;
+    },
   },
 });
 
-export const { setRequest, setStartPoint,setFinishPoint } = requestSlice.actions;
+export const { setRequest, setStartPoint, setFinishPoint } = requestSlice.actions;
 export default requestSlice.reducer;

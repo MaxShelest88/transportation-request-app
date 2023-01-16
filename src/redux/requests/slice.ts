@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { requests } from '../../data/data';
+import { RequestType } from '../../types';
 
 const initialState = {
   items: requests,
@@ -11,14 +12,16 @@ const requestsSlice = createSlice({
   reducers: {
     setCurrentPoint(state, action) {
       const currentItem = state.items.find((item) => item.id === action.payload.item.id);
-      currentItem.path = {
-        startPoint: action.payload.startPoint
-          ? action.payload.startPoint
-          : currentItem.path.startPoint,
-        finishPoint: action.payload.finishPoint
-          ? action.payload.finishPoint
-          : currentItem.path.finishPoint,
-      };
+      if (currentItem && typeof currentItem === 'object') {
+        currentItem.path = {
+          startPoint: action.payload.startPoint
+            ? action.payload.startPoint
+            : currentItem.path.startPoint,
+          finishPoint: action.payload.finishPoint
+            ? action.payload.finishPoint
+            : currentItem.path.finishPoint,
+        };
+      }
     },
   },
 });

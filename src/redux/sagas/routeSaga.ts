@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 import { getRouteSuccess, getRouteError } from '../route/slice';
+import { Action } from '@reduxjs/toolkit';
 
 function* getRouteFetchWorker(action) {
   const { startPoint, finishPoint } = action.payload;

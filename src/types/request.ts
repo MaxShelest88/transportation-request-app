@@ -7,6 +7,6 @@ export type Path = {
 
 export type RequestType = {
   title: string;
-  id: string;
+  id: number;
   path: Path;
 };

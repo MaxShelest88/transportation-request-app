@@ -4,6 +4,7 @@ import routeReducer from './route/slice';
 import requestsReducer from './requests/slice';
 import createSagaMiddleware from '@redux-saga/core';
 import routeSaga from './sagas/routeSaga';
+import { useDispatch } from 'react-redux';
 
 const saga = createSagaMiddleware();
 export const store = configureStore({
@@ -21,3 +22,4 @@ saga.run(routeSaga);
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch
+export const useAppDispatch: () => AppDispatch = useDispatch;

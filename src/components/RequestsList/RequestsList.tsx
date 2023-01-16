@@ -7,8 +7,14 @@ import classes from './RequestsList.module.scss';
 import { selectId, selectPath } from '../../redux/request/selectors';
 import RequestItem from '../RequestItem/RequestItem';
 import { getRouteFetch } from '../../redux/route/slice';
+import { PointType, RequestType } from '../../types';
 
-const RequestsList = ({ data, cities }) => {
+type RequestsListProps = {
+  data: RequestType;
+  cities: PointType[];
+};
+
+const RequestsList: React.FC<RequestsListProps> = ({ data, cities }) => {
   const path = useSelector(selectPath);
   const id = useSelector(selectId);
   const dispatch = useDispatch();

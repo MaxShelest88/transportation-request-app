@@ -6,9 +6,18 @@ import { useDispatch } from 'react-redux';
 import classes from './RequestItem.module.scss';
 import { useRef } from 'react';
 import { setCurrentPoint } from '../../redux/requests/slice';
-import { RequestItemType } from '../../types/requestItem';
+import { PointType, RequestType } from '../../types';
 
-const RequestItem: React.FC<RequestItemType> = ({
+type RequestItemProps = {
+  item: RequestType;
+  id: number;
+  cities: PointType[];
+  handleStartPointChange: (value: string) => void;
+  handleFinishPointChange: (value: string) => void;
+  handleClick: (item: RequestType) => void;
+};
+
+const RequestItem: React.FC<RequestItemProps> = ({
   item,
   id,
   cities,
