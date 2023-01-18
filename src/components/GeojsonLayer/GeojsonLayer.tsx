@@ -22,7 +22,6 @@ const icon = new L.Icon({
 
 const GeojsonLayer: React.FC = () => {
   const features: GeoJSON.Feature[] = useSelector(selectFeatures);
-
   return (
     <FeatureGroup>
       {features.map((f) => {

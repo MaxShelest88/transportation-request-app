@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { List } from 'antd';
 import { CarOutlined } from '@ant-design/icons';
 import Select from '../UI/SelectModule/SelectModule';
-import { useDispatch } from 'react-redux';
 import classes from './RequestItem.module.scss';
 import { useRef } from 'react';
 import { setCurrentPoint } from '../../redux/requests/slice';
 import { PointType, RequestType } from '../../types';
+import { useAppDispatch } from '../../redux/store';
 
 type RequestItemProps = {
   item: RequestType;
@@ -28,13 +28,13 @@ const RequestItem: React.FC<RequestItemProps> = ({
   const [startValue, setStartValue] = useState(item.path.startPoint.value);
   const [finishValue, setFinishValue] = useState(item.path.finishPoint.value);
   const isMounted = useRef(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isMounted.current) {
       const startPoint = cities.find((item) => item.value === startValue);
       const finishPoint = cities.find((item) => item.value === finishValue);
-      dispatch(setCurrentPoint({ startPoint, finishPoint, item }));
+      if (startPoint && finishPoint) dispatch(setCurrentPoint({ startPoint, finishPoint, item }));
     }
     isMounted.current = true;
   }, [startValue, finishValue]);

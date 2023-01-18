@@ -1,39 +1,40 @@
 import React, { useEffect } from 'react';
 import { List } from 'antd';
 import { setFinishPoint, setRequest, setStartPoint } from '../../redux/request/slice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import 'antd/dist/antd.css';
 import classes from './RequestsList.module.scss';
 import { selectId, selectPath } from '../../redux/request/selectors';
 import RequestItem from '../RequestItem/RequestItem';
 import { getRouteFetch } from '../../redux/route/slice';
 import { PointType, RequestType } from '../../types';
+import { useAppDispatch } from '../../redux/store';
 
 type RequestsListProps = {
-  data: RequestType;
+  data: RequestType[];
   cities: PointType[];
 };
 
 const RequestsList: React.FC<RequestsListProps> = ({ data, cities }) => {
   const path = useSelector(selectPath);
   const id = useSelector(selectId);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getRouteFetch(path));
   }, [path, dispatch]);
 
-  const handleStartPointChange = (value) => {
+  const handleStartPointChange = (value: string) => {
     const selectedPoint = cities.find((item) => item.value === value);
-    dispatch(setStartPoint(selectedPoint));
+    if (selectedPoint) dispatch(setStartPoint(selectedPoint));
   };
 
-  const handleFinishPointChange = (value) => {
+  const handleFinishPointChange = (value: string) => {
     const selectedPoint = cities.find((item) => item.value === value);
-    dispatch(setFinishPoint(selectedPoint));
+    if (selectedPoint) dispatch(setFinishPoint(selectedPoint));
   };
 
-  const handleClick = (item) => {
+  const handleClick = (item: RequestType) => {
     dispatch(setRequest(item));
   };
 
@@ -48,7 +49,6 @@ const RequestsList: React.FC<RequestsListProps> = ({ data, cities }) => {
             <RequestItem
               item={item}
               id={id}
-              path={path}
               handleFinishPointChange={handleFinishPointChange}
               handleClick={handleClick}
               handleStartPointChange={handleStartPointChange}

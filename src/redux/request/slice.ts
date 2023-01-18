@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PointType, RequestType, Waypoint } from '../../types';
+import { PointType, RequestType } from '../../types';
 
 const initialState: RequestType = {
   title: 'Заявка 1',

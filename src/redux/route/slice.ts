@@ -1,8 +1,8 @@
-import { createSlice} from '@reduxjs/toolkit';
-import { Status } from '../../types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PathType, Status } from '../../types';
 
 const initialState = {
-  features: [],
+  features: [] as GeoJSON.Feature[],
   status: Status.LOADING,
 };
 
@@ -10,11 +10,11 @@ export const routeSlice = createSlice({
   name: 'route',
   initialState,
   reducers: {
-    getRouteFetch(state) {
+    getRouteFetch(state, action: PayloadAction<PathType>) {
       state.features = [];
       state.status = Status.LOADING;
     },
-    getRouteSuccess(state, action) {
+    getRouteSuccess(state, action: PayloadAction<GeoJSON.Feature[]>) {
       state.features = action.payload;
       state.status = Status.SUCCESS;
     },

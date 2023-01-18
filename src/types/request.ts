@@ -1,6 +1,6 @@
 import { PointType } from './point';
 
-export type Path = {
+export type PathType = {
   finishPoint: PointType;
   startPoint: PointType;
 };
@@ -8,5 +8,5 @@ export type Path = {
 export type RequestType = {
   title: string;
   id: number;
-  path: Path;
+  path: PathType;
 };
