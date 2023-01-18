@@ -3,7 +3,8 @@
 - React
 - Redux (Redux-toolkit, Redux-saga)
 - AntdDesign
-- Leaflet
+- React-Leaflet
 - Axios
 - React-split
 - Sass module
+- TypeScript
