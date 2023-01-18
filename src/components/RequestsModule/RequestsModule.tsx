@@ -8,7 +8,7 @@ import { points } from '../../data/data';
 import { useWindowSize } from 'usehooks-ts';
 import { Size } from '../../hooks/useWindowSize';
 
-const RequestsModule = () => {
+const RequestsModule: React.FC = () => {
   const data = useSelector(selectRequests);
   const size: Size = useWindowSize();
   const sizeWindth = size.width ? size.width : window.innerWidth;
