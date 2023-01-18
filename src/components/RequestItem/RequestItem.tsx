@@ -51,7 +51,8 @@ const RequestItem: React.FC<RequestItemProps> = ({
     if (id === item.id) {
       handleFinishPointChange(value);
     }
-  };
+	};
+	
 
   return (
     <List.Item
@@ -68,7 +69,7 @@ const RequestItem: React.FC<RequestItemProps> = ({
           <Select
             value={startValue}
             handleChange={handleStartChange}
-            defaultValue={item.path.startPoint}
+            defaultValue={item.path.startPoint.value}
             options={cities}
             item={item}
           />
@@ -78,7 +79,7 @@ const RequestItem: React.FC<RequestItemProps> = ({
           <Select
             value={finishValue}
             handleChange={handlefinishChange}
-            defaultValue={item.path.finishPoint}
+            defaultValue={item.path.finishPoint.value}
             options={cities}
             item={item}
           />

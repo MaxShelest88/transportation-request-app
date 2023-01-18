@@ -1,10 +1,24 @@
 import React from 'react';
 import { Select } from 'antd';
 import './SelectModule.scss';
+import { PointType, RequestType } from '../../../types';
 const { Option } = Select;
 
-const SelectModule = ({ options, value, defaultValue, handleChange, item }) => {
+type SelectModuleProps = {
+  options: PointType[];
+  value: string;
+  defaultValue: string;
+  handleChange: (value: string) => void;
+  item: RequestType;
+};
 
+const SelectModule: React.FC<SelectModuleProps> = ({
+  options,
+  value,
+  defaultValue,
+  handleChange,
+  item,
+}) => {
   const optionValues = options.map((option) => (
     <Option
       value={option.value}
@@ -25,7 +39,7 @@ const SelectModule = ({ options, value, defaultValue, handleChange, item }) => {
       defaultValue={defaultValue}
       value={value}
       style={{
-			width: 120,
+        width: 120,
       }}
       onChange={handleChange}
     >

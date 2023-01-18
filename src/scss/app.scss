@@ -49,9 +49,10 @@ body {
 
 .split-wrapper {
 	height: 100%;
+	padding: 15px 0;
 	@media (min-width: 768px) {
-		flex: 0 0 100%;
 		display: flex;
+		flex: 0 0 100%;
 		padding: 100px 0;
 	}
 }
