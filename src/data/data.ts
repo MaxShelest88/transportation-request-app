@@ -1,4 +1,6 @@
-export const points = [
+import { PointType, RequestType } from "../types";
+
+export const points: PointType[] = [
   {
     id: 'city-01',
     name: 'Москва',
@@ -25,7 +27,7 @@ export const points = [
   },
 ];
 
-export const requests = [
+export const requests: RequestType[] = [
     {
       title: 'Заявка 1',
       id: 0,
