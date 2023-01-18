@@ -1,5 +1,6 @@
-# Tech Stack:
+Модуль отображения заявок на перевозку
 
+# Tech Stack:
 - React
 - Redux (Redux-toolkit, Redux-saga)
 - AntdDesign
