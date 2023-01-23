@@ -5,7 +5,7 @@ import MapComponent from '../MapComponent/MapComponent';
 import RequestsList from '../RequestsList/RequestsList';
 import { useSelector } from 'react-redux';
 import { points } from '../../data/data';
-import { useWindowSize } from 'usehooks-ts';
+import { useWindowSize } from '../../hooks/useWindowSize';
 import { Size } from '../../hooks/useWindowSize';
 
 const RequestsModule: React.FC = () => {
